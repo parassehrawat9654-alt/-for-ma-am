@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Just Us — our little world">
+  <title>Just Us — our little world</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@500;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+    :root {
+      --bg: #f4f0e5;
+      --bg-2: #f0eadd;
+      --rose: #b83c3c;
+      --rose-dark: #8f2d2d;
+      --rose-light: #e8cfcf;
+      --cream: #f7efd8;
+      --cream-2: #efe7d0;
+      --ink: #3d2b2b;
+      --muted: #6b5555;
+      --border: #b83c3c;
+      --shadow: rgba(61, 43, 43, 0.12);
+      --window-shadow: 8px 8px 0 rgba(61, 43, 43, 0.12);
+      --font-display: 'Bebas Neue', 'Arial Black', sans-serif;
+      --font-body: 'Inter', 'Segoe UI', sans-serif;
+      --font-hand: 'Caveat', 'Segoe Print', cursive;
+      --font-mono: 'Space Mono', 'Courier New', monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    img, svg { max-width: 100%; display: block; }
+
+    .mono { font-family: var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+    .hand { font-family: var(--font-hand); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 4vw;
+      background: rgba(244,240,229,.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(184,60,60,.18);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: .4rem;
+      text-decoration: none;
+      color: var(--rose);
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      letter-spacing: .04em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .brand .mini-heart { font-size: 1rem; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a, nav button {
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      background: none;
+      border: none;
+      padding: .35rem 0;
+      color: var(--ink);
+      cursor: pointer;
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s ease, color .2s ease;
+    }
+
+    nav a:hover, nav button:hover {
+      color: var(--rose);
+      border-bottom-color: var(--rose);
+    }
+
+    .online {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      font-family: var(--font-mono);
+      font-size: .65rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .online i {
+      width: 8px; height: 8px; display: inline-block; border-radius: 50%;
+      background: #4caf50;
+      box-shadow: 0 0 0 2px rgba(76,175,80,.25);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50% { opacity: .6; }
+    }
+
+    .eyebrow {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.2rem 6vw 0;
+      font-family: var(--font-mono);
+      font-size: .68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 4vh 6vw 6vh;
+      min-height: calc(100vh - 70px);
+    }
+
+    .hero-copy { max-width: 620px; }
+    .hero-copy .mono {
+      color: var(--rose);
+      font-size: .75rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-copy h1 {
+      margin: 0 0 1.5rem;
+      color: var(--rose);
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 9vw, 8.5rem);
+      line-height: .92;
+      letter-spacing: .02em;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      max-width: 460px;
+    }
+
+    .primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      background: var(--rose);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding: 1rem 1.4rem;
+      border: 1px solid var(--rose-dark);
+      box-shadow: 4px 4px 0 var(--shadow);
+      transition: transform .15s ease, box-shadow .15s ease;
+      cursor: pointer;
+    }
+
+    .primary:hover {
+      transform: translate(-2px,-2px);
+      box-shadow: 6px 6px 0 var(--shadow);
+    }
+
+    .hero-note {
+      display: block;
+      margin-top: 1.2rem;
+      font-size: 1.25rem;
+      color: var(--rose);
+      transform: rotate(-2deg);
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .floating-label {
+      position: absolute;
+      top: 0;
+      right: 5%;
+      background: var(--bg);
+      border: 1px solid rgba(184,60,60,.2);
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: .6rem;
+      padding: .3rem .6rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .love-window {
+      width: min(420px, 90%);
+      background: var(--bg);
+      border: 2px solid var(--rose);
+      box-shadow: var(--window-shadow);
+      transform: rotate(-3deg);
+    }
+
+    .love-window .titlebar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--rose);
+      color: white;
+      padding: .5rem .8rem;
+      font-family: var(--font-mono);
+      font-size: .65rem;
+      letter-spacing: .06em;
+    }
+
+    .letter-preview { padding: 1.7rem; text-align: center; }
+    .letter-preview .mono {
+      font-size: .6rem;
+      color: var(--muted);
+      margin-bottom: .8rem;
+    }
+
+    .pixel-heart {
+      font-size: 3.5rem;
+      color: var(--rose);
+      line-height: 1;
+      margin: .5rem 0;
+    }
+
+    .letter-preview h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: .8rem 0;
+      line-height: 1.25;
+    }
+
+    .letter-preview p { color: var(--muted); margin: 0 0 1rem; }
+    .letter-preview .hand { font-size: 1.4rem; color: var(--rose); }
+
+    .letter-footer {
+      margin-top: 1.2rem;
+      padding-top: .8rem;
+      border-top: 1px dashed rgba(184,60,60,.35);
+      font-family: var(--font-mono);
+      font-size: .55rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: .5rem;
+    }
+
+    .sticky {
+      position: absolute;
+      bottom: 8%;
+      right: -5%;
+      width: 170px;
+      min-height: 170px;
+      background: var(--cream);
+      padding: 1.2rem 1rem;
+      transform: rotate(8deg);
+      box-shadow: 4px 4px 0 rgba(61,43,43,.1);
+    }
+
+    .tape {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 22px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(184,60,60,.15);
+    }
+
+    .sticky p {
+      font-family: var(--font-hand);
+      font-size: 1.35rem;
+      color: var(--ink);
+      margin: .2rem 0 .8rem;
+      line-height: 1.1;
+    }
+
+    .desktop-file {
+      position: absolute;
+      bottom: 6%;
+      left: 5%;
+      text-align: center;
+    }
+
+    #folder-art {
+      display: block;
+      width: 54px;
+      height: 40px;
+      background: var(--rose-light);
+      border: 2px solid var(--rose);
+      border-radius: 2px 6px 2px 2px;
+      position: relative;
+      margin: 0 auto .4rem;
+    }
+
+    #folder-art::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 4px;
+      width: 22px; height: 8px;
+      background: var(--rose-light);
+      border: 2px solid var(--rose);
+      border-bottom: none;
+      border-radius: 3px 3px 0 0;
+    }
+
+    .desktop-file small {
+      font-family: var(--font-mono);
+      font-size: .55rem;
+      color: var(--muted);
+    }
+
+    .art-spark {
+      position: absolute;
+      top: 18%;
+      right: 0;
+      font-size: 2rem;
+      color: var(--rose);
+      animation: sparkle 2.5s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .ticker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1.1rem 4vw;
+      border-top: 1px solid var(--rose);
+      border-bottom: 1px solid var(--rose);
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      color: var(--rose);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .ticker b { font-size: 1rem; }
+
+    #collection { padding: 6vh 6vw; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-heading .mono {
+      color: var(--rose);
+      margin-bottom: .6rem;
+      font-size: .7rem;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: var(--rose);
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      letter-spacing: .02em;
+      line-height: 1;
+    }
+
+    .section-heading h2 em {
+      font-style: normal;
+      font-family: var(--font-hand);
+      font-size: .75em;
+      font-weight: 700;
+    }
+
+    .section-heading > p {
+      margin: 0;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .desktop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .desktop-card {
+      background: var(--bg);
+      border: 1px solid var(--rose);
+      box-shadow: 5px 5px 0 var(--shadow);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .desktop-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 8px 8px 0 var(--shadow);
+    }
+
+    .desktop-card .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .55rem .8rem;
+      border-bottom: 1px solid var(--rose);
+      font-family: var(--font-mono);
+      font-size: .6rem;
+      color: var(--rose);
+      text-transform: uppercase;
+    }
+
+    .desktop-card .card-body {
+      flex: 1;
+      padding: 1.6rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 180px;
+    }
+
+    .desktop-card .card-icon {
+      font-size: 2.4rem;
+      color: var(--rose);
+      margin-bottom: .8rem;
+      line-height: 1;
+    }
+
+    .desktop-card h3 {
+      margin: 0 0 .4rem;
+      color: var(--rose);
+      font-family: var(--font-display);
+      font-size: 2rem;
+      line-height: 1.05;
+      letter-spacing: .02em;
+    }
+
+    .desktop-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .desktop-card .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .75rem .9rem;
+      border-top: 1px solid var(--rose);
+      font-family: var(--font-mono);
+      font-size: .58rem;
+      color: var(--rose);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .desktop-card.wide { grid-column: span 2; }
+
+    .desktop-card.note {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 1rem;
+      cursor: default;
+    }
+
+    .desktop-card.note:hover { transform: none; box-shadow: none; }
+    .desktop-card.note .note-label {
+      font-family: var(--font-mono);
+      font-size: .6rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: .8rem;
+    }
+
+    .desktop-card.note p {
+      font-family: var(--font-hand);
+      font-size: 2.4rem;
+      color: var(--rose);
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    .desktop-card.note .note-sign {
+      font-family: var(--font-hand);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-top: 1rem;
+    }
+
+    .bottom-note {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 6vh 6vw;
+      border-top: 1px solid rgba(184,60,60,.25);
+    }
+
+    .bottom-note .pixel-small { font-size: 3rem; color: var(--rose); }
+    .bottom-note p { margin: 0; font-size: 1.15rem; color: var(--muted); }
+    .bottom-note p em {
+      display: block;
+      margin-top: .3rem;
+      font-family: var(--font-hand);
+      font-size: 1.8rem;
+      color: var(--rose);
+      font-style: normal;
+    }
+    .bottom-note .mono {
+      font-size: .6rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.6rem 6vw;
+      border-top: 1px solid rgba(184,60,60,.2);
+      flex-wrap: wrap;
+    }
+
+    .footer-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      cursor: pointer;
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color .15s ease;
+    }
+
+    .footer-link:hover { color: var(--rose); }
+
+    .sync-dot {
+      display: inline-block;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #4caf50;
+      margin-right: .35rem;
+      vertical-align: middle;
+    }
+
+    .sync-dot.syncing { background: #ffb300; animation: pulse .8s infinite; }
+    .sync-dot.offline { background: #9e9e9e; }
+
+    dialog {
+      border: 2px solid var(--rose);
+      box-shadow: 10px 10px 0 var(--shadow);
+      padding: 0;
+      width: min(720px, 92vw);
+      max-width: min(720px,92vw);
+      max-height: 86vh;
+      background: var(--bg);
+      color: var(--ink);
+      margin: auto;
+    }
+
+    dialog::backdrop {
+      background: rgba(61,43,43,.35);
+      backdrop-filter: blur(2px);
+    }
+
+    dialog .titlebar {
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--rose);
+      color: #fff;
+      padding: .55rem .8rem;
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      letter-spacing: .06em;
+      position: sticky; top: 0; z-index: 10;
+    }
+
+    .close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.3rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .workspace-content, .form-content, .reminder-body { padding: 1.4rem; }
+
+    .workspace-heading {
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      margin: .6rem 0 1rem;
+      flex-wrap: wrap;
+    }
+
+    .workspace-heading h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--rose);
+      letter-spacing: .02em;
+    }
+
+    .save-note {
+      margin: .4rem 0;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    .entry {
+      background: #fff;
+      border: 1px solid rgba(184,60,60,.35);
+      padding: 1rem;
+      margin-bottom: .8rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .entry .entry-meta {
+      min-width: 110px;
+      font-family: var(--font-mono);
+      font-size: .55rem;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .entry .entry-body { flex: 1; }
+
+    .entry h4 {
+      margin: 0 0 .3rem;
+      color: var(--rose);
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: .02em;
+    }
+
+    .entry p {
+      margin: 0;
+      color: var(--ink);
+      font-size: .92rem;
+      white-space: pre-wrap;
+    }
+
+    .entry img {
+      margin-top: .6rem;
+      max-width: 180px;
+      max-height: 140px;
+      object-fit: cover;
+      border: 1px solid var(--rose-light);
+    }
+
+    .entry-actions {
+      display: flex; gap: .4rem; flex-wrap: wrap;
+    }
+
+    .entry-actions button {
+      font-family: var(--font-mono);
+      font-size: .55rem;
+      text-transform: uppercase;
+      background: var(--bg-2);
+      border: 1px solid var(--rose);
+      color: var(--rose);
+      padding: .35rem .55rem;
+      cursor: pointer;
+    }
+
+    .entry-actions button:hover { background: var(--rose); color: #fff; }
+
+    .form-content label {
+      display: block;
+      margin-bottom: .9rem;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    .form-content input, .form-content textarea {
+      display: block;
+      width: 100%;
+      margin-top: .35rem;
+      padding: .7rem;
+      background: white;
+      border: 1px solid rgba(184,60,60,.35);
+      color: var(--ink);
+      font-size: .95rem;
+    }
+
+    .form-content input:focus, .form-content textarea:focus { outline: 2px solid var(--rose-light); }
+    .form-error { color: var(--rose); font-size: .8rem; margin: .5rem 0; }
+
+    .delete-actions {
+      display: flex; gap: .8rem; justify-content: flex-end; margin-top: 1rem;
+    }
+
+    .secondary {
+      background: transparent;
+      color: var(--rose);
+      border: 1px solid var(--rose);
+      padding: .7rem 1rem;
+      font-family: var(--font-mono);
+      font-size: .65rem;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .reminder-body { text-align: center; }
+    .reminder-body .pixel-heart {
+      font-size: 4rem;
+      color: var(--rose);
+      line-height: 1;
+    }
+
+    .reminder-body h2 {
+      margin: .8rem 0;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .reminder-body .hand {
+      font-size: 1.4rem;
+      color: var(--rose);
+      margin-bottom: 1.2rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-art { order: -1; min-height: 420px; }
+      .desktop-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .desktop-card.wide { grid-column: span 2; }
+      .section-heading { flex-direction: column; align-items: flex-start; }
+      .section-heading > p { text-align: left; }
+    }
+
+    @media (max-width: 640px) {
+      header { flex-wrap: wrap; }
+      .online { display: none; }
+      .desktop-grid { grid-template-columns: 1fr; }
+      .desktop-card.wide { grid-column: span 1; }
+      .bottom-note { flex-direction: column; text-align: center; }
+      footer { flex-direction: column; text-align: center; gap: .6rem; }
+      .sticky { right: 0; width: 140px; }
+      .entry { flex-direction: column; }
+      nav { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="#home"><span class="mini-heart">♥</span> JUST US</a>
+    <nav aria-label="Main navigation">
+      <a href="#collection">Our little world</a>
+      <button id="surprise" type="button">A little reminder ↗</button>
+      <button id="open-share-dialog" type="button">Share / export ♡</button>
+    </nav>
+    <span class="online"><i></i> <span id="header-sync-text">Better together</span></span>
+  </header>
+
+  <main id="home">
+    <div class="eyebrow">
+      <span>Est. the day we met</span>
+      <span>A place for you + me</span>
+    </div>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="mono">// My favorite person, my favorite place.</p>
+        <h1>YOU.<br>ME.<br>EVERYTHING<br>IN BETWEEN</h1>
+        <p class="intro">
+          Not the whole internet. Just our little corner of it.<br>
+          For the big moments, the tiny things, and all the reasons I'd choose you again.
+        </p>
+        <a class="primary" href="#collection">Open our little world ↓</a>
+        <span class="hand hero-note">made with love. obviously.</span>
+      </div>
+
+      <div class="hero-art" aria-label="A love letter on our shared desktop">
+        <div class="floating-label">100% us. zero explanation needed.</div>
+
+        <div class="love-window">
+          <div class="titlebar"><span>♡ LOVE_LETTER.TXT</span><span>− □ ×</span></div>
+          <div class="letter-preview">
+            <p class="mono">To: My favorite human</p>
+            <div class="pixel-heart">♥</div>
+            <h2>Of all the tabs I've opened,<br>you're my favorite.</h2>
+            <p>Here's to collecting a life full of<br>"remember when?" with you.</p>
+            <span class="hand">always, your person</span>
+            <div class="letter-footer">
+              <span>ATTACHMENTS: ALL MY LOVE</span>
+              <span>↵</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sticky">
+          <span class="tape"></span>
+          <p>Little reminder:<br>you + me =<br>my favorite thing.</p>
+          <span>♡</span>
+        </div>
+
+        <div class="desktop-file">
+          <span id="folder-art"></span>
+          <small>our_forever.zip</small>
+        </div>
+
+        <div class="art-spark">✦</div>
+      </div>
+    </section>
+
+    <div class="ticker">
+      <span>Small moments. Big feelings.</span><b>✦</b>
+      <span>Same two people. A million memories.</span><b>✦</b>
+      <span>My favorite kind of forever.</span><b>✦</b>
+    </div>
+
+    <section id="collection">
+      <div class="section-heading">
+        <div>
+          <p class="mono">[ Our shared desktop ]</p>
+          <h2>A little bit of <em>us.</em></h2>
+        </div>
+        <p>Everything I want to keep.<br>Everyone I want to keep it with: you.</p>
+      </div>
+
+      <div class="desktop-grid" id="section-grid"><div class="desktop-card" style="background: rgb(240, 220, 220);">
+          <div class="card-header"><span>[ 01 : MEMORIES.JPG ]</span><span>2 ITEMS →</span></div>
+          <div class="card-body">
+            <div class="card-icon">✇</div>
+            <h3>OUR MEMORIES</h3>
+            <p>The moments I'd live twice.</p>
+          </div>
+          <div class="card-footer"><span>OPEN THE ALBUM</span><span>→</span></div>
+        </div><div class="desktop-card" style="background: rgb(239, 231, 208);">
+          <div class="card-header"><span>[ 02 : INSIDE_JOKES.EXE ]</span><span>2 ITEMS →</span></div>
+          <div class="card-body">
+            <div class="card-icon">☺</div>
+            <h3>ONLY WE GET IT.</h3>
+            <p>Absolutely no context required.</p>
+          </div>
+          <div class="card-footer"><span>LET ME LAUGH</span><span>→</span></div>
+        </div><div class="desktop-card" style="background: rgb(244, 237, 226);">
+          <div class="card-header"><span>[ 03 : LOVE_LETTERS.TXT ]</span><span>2 ITEMS →</span></div>
+          <div class="card-body">
+            <div class="card-icon">✉</div>
+            <h3>WORDS FOR YOU</h3>
+            <p>Some things deserve more than a text.</p>
+          </div>
+          <div class="card-footer"><span>READ THE LETTERS</span><span>→</span></div>
+        </div><div class="desktop-card" style="background: rgb(240, 220, 220);">
+          <div class="card-header"><span>[ 04 : OUR_SOUNDTRACK.MP3 ]</span><span>2 ITEMS →</span></div>
+          <div class="card-body">
+            <div class="card-icon">♫</div>
+            <h3>SOUNDS LIKE US</h3>
+            <p>Every good love story has a soundtrack.</p>
+          </div>
+          <div class="card-footer"><span>OPEN THE PLAYLIST</span><span>→</span></div>
+        </div><div class="desktop-card wide" style="background: rgb(239, 231, 208);">
+          <div class="card-header"><span>[ 05 : SOMEDAY_WITH_YOU.LST ]</span><span>2 ITEMS →</span></div>
+          <div class="card-body">
+            <div class="card-icon">✛</div>
+            <h3>OUR SOMEDAY LIST</h3>
+            <p>Big dreams. Small adventures. Together.</p>
+          </div>
+          <div class="card-footer"><span>MAKE SOME PLANS</span><span>→</span></div>
+        </div><div class="desktop-card note">
+        <div class="note-label">NOTE TO SELF:</div>
+        <p>Collect moments.<br>Keep the silly things.<br>Love them loudly.</p>
+        <div class="note-sign">especially the silly things. ♡</div>
+      </div></div>
+    </section>
+
+    <section class="bottom-note">
+      <span class="pixel-small">♥</span>
+      <p>There are a million places we could be.<br><em>I like being here, with you.</em></p>
+      <span class="mono">End of page.<br>Not even close to the end of us.</span>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#home">JUST US.</a>
+    <span>Handmade for my favorite human.</span>
+    <div class="footer-meta">
+      <span><i class="sync-dot" id="sync-dot"></i><span id="save-indicator">Live sync active ♡</span></span>
+      <button id="footer-share-btn" class="footer-link" type="button">Export for web / share ↗</button>
+    </div>
+  </footer>
+
+  <dialog id="workspace">
+    <div class="titlebar">
+      <span id="workspace-title"></span>
+      <button class="close" aria-label="Close section">×</button>
+    </div>
+    <div class="workspace-content">
+      <p class="mono" id="workspace-subtitle"></p>
+      <div class="workspace-heading">
+        <h2 id="workspace-heading"></h2>
+        <button class="primary" id="add-entry" type="button">+ Add something</button>
+      </div>
+      <p class="save-note">Use Move Up or Move Down to reorder items. Everything we add here is saved for both of us.</p>
+      <p id="entry-status" class="save-note" style="color: var(--rose); font-weight: 500;" role="status"></p>
+      <div id="entries"></div>
+    </div>
+  </dialog>
+
+  <dialog id="editor">
+    <form id="entry-form">
+      <div class="titlebar"><span id="editor-title">A new little thing</span><button type="button" class="close" aria-label="Close editor">×</button></div>
+      <div class="form-content">
+        <p class="mono">// Another piece of our story</p>
+        <label>Your name
+          <input name="author" maxlength="50" placeholder="Me / you / your nickname" required="">
+        </label>
+        <label id="title-label">Title
+          <input name="title" maxlength="120" placeholder="Give this little moment a name" required="">
+        </label>
+        <label id="body-label">A little note
+          <textarea name="body" maxlength="5000" rows="4" placeholder="The things I want you to remember…"></textarea>
+        </label>
+        <label id="photo-label" hidden="">Photo
+          <input name="photo" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
+          <small>Choose a photo up to 8 MB. Automatically saved to our album.</small>
+        </label>
+        <label id="url-label" hidden="">Song link
+          <input name="url" type="url" placeholder="https://open.spotify.com/track/…">
+        </label>
+        <p class="form-error" id="form-error" role="alert"></p>
+        <button class="primary" type="submit">Add to our world ♡</button>
+        <p class="save-note">Saved automatically to our shared space (<strong id="editor-room-name">JUST-US-01</strong>).</p>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="delete-confirmation">
+    <div class="titlebar"><span>DELETE_ENTRY.TXT</span><button class="close" aria-label="Cancel deletion">×</button></div>
+    <div class="form-content">
+      <h2 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--rose); margin: 0 0 .5rem;">Delete this little thing?</h2>
+      <p id="delete-item-title" style="font-weight: 600;"></p>
+      <p class="save-note">This permanently removes the item from your saved collection.</p>
+      <div class="delete-actions">
+        <button id="cancel-delete" class="secondary" type="button" autofocus="">Keep it</button>
+        <button id="confirm-delete" class="primary" type="button">Yes, delete</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="reset-confirmation">
+    <div class="titlebar"><span>RESET_COLLECTION.EXE</span><button class="close" aria-label="Cancel reset">×</button></div>
+    <div class="form-content">
+      <h2 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--rose); margin: 0 0 .5rem;">Restore default examples?</h2>
+      <p class="save-note">This will replace any custom entries you've added or reordered with the original starter examples.</p>
+      <div class="delete-actions">
+        <button id="cancel-reset" class="secondary" type="button">Keep my data</button>
+        <button id="confirm-reset" class="primary" type="button">Restore defaults</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="reminder">
+    <div class="titlebar"><span>A_LITTLE_REMINDER.TXT</span><button class="close" aria-label="Close reminder">×</button></div>
+    <div class="reminder-body">
+      <span class="pixel-heart">♥</span>
+      <h2 id="reminder-text"></h2>
+      <p class="hand">in case you forgot today.</p>
+      <button class="primary" id="another-reminder" type="button">One more, please ↻</button>
+    </div>
+  </dialog>
+
+  <dialog id="room-dialog">
+    <form id="room-form">
+      <div class="titlebar"><span>SHARE_AND_EXPORT_WEB.EXE</span><button type="button" class="close" aria-label="Close share window">×</button></div>
+      <div class="form-content">
+        <p class="mono">// Send this to your favorite person</p>
+        <h2 style="font-family: var(--font-display); font-size: 2rem; color: var(--rose); margin: 0 0 .4rem;">Publish or share with her</h2>
+        <p class="save-note">Add your memories, letters, photos, and songs first — then use either option below to put it on the web for her.</p>
+
+        <div style="background: var(--cream); border: 1px solid var(--rose); padding: 1rem; margin: .9rem 0;">
+          <p class="mono" style="font-size: .62rem; color: var(--rose); font-weight: 700; margin: 0 0 .35rem;">OPTION 1 : PUBLISH AS A FREE PUBLIC WEBSITE</p>
+          <p class="save-note" style="margin: 0 0 .7rem;">Download a complete single-file index.html and upload it to Netlify or Tiiny Host to get a live link for her.</p>
+          <button id="download-baked-html" class="primary" type="button" style="width:100%; justify-content:center;">Download ready-to-host index.html ↓</button>
+        </div>
+
+        <div style="background: #fff; border: 1px solid rgba(184,60,60,.4); padding: 1rem; margin: .9rem 0;">
+          <p class="mono" style="font-size: .62rem; color: var(--rose); font-weight: 700; margin: 0 0 .35rem;">OPTION 2 : INSTANT SHARE LINK</p>
+          <p class="save-note" style="margin: 0 0 .7rem;">Copies your current web URL with your shared room code and a snapshot of your notes and photos.</p>
+          <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
+            <button id="copy-room-link" class="primary" type="button" style="flex:1; justify-content:center;">Copy web link for her ♡</button>
+            <button id="native-share-btn" class="secondary" type="button">Share ↗</button>
+          </div>
+        </div>
+
+        <details style="margin-top: .9rem; border-top: 1px dashed rgba(184,60,60,.3); padding-top: .8rem;">
+          <summary class="mono" style="font-size: .62rem; color: var(--muted); cursor: pointer;">Shared secret room code &amp; JSON backups</summary>
+          <div style="margin-top: .8rem;">
+            <label style="margin-bottom: .6rem;">Shared live room code
+              <input id="room-code-input" name="roomCode" maxlength="40" placeholder="e.g. JUST-US-01" required="" value="JUST-US-01">
+            </label>
+            <div style="display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.6rem;">
+              <button class="secondary" type="submit">Set room code</button>
+              <button id="export-json-btn" class="secondary" type="button">Export .json</button>
+              <button id="import-json-btn" class="secondary" type="button">Import .json</button>
+              <button id="open-reset-dialog" class="secondary" type="button">Restore examples</button>
+              <input id="import-json-input" type="file" accept="application/json,.json" hidden="">
+            </div>
+          </div>
+        </details>
+
+        <p id="room-status-msg" class="save-note" style="color: var(--rose); font-weight:600; margin-top:.7rem;">Downloaded index.html! Drop it onto Netlify or Tiiny Host to get a live link for her ♡</p>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+    const defaultSections = [
+      {
+        id: 'memories',
+        filename: '01 : MEMORIES.JPG',
+        title: 'OUR MEMORIES',
+        subtitle: "The moments I'd live twice.",
+        cta: 'OPEN THE ALBUM',
+        icon: '✇',
+        color: '#f0dcdc',
+        type: 'photo',
+        heading: 'OUR MEMORIES',
+        entries: [
+          { author: 'Me', title: 'That rainy afternoon', body: "We didn't do much. That's why I remember it so much.", date: '14/02/2025' },
+          { author: 'You', title: 'The coffee shop', body: 'You laughed at my terrible joke. I still have the receipt.', date: '21/02/2025' }
+        ]
+      },
+      {
+        id: 'jokes',
+        filename: '02 : INSIDE_JOKES.EXE',
+        title: 'ONLY WE GET IT.',
+        subtitle: 'Absolutely no context required.',
+        cta: 'LET ME LAUGH',
+        icon: '☺',
+        color: '#efe7d0',
+        type: 'text',
+        heading: 'INSIDE JOKES',
+        entries: [
+          { author: 'Us', title: 'The potato incident', body: "No one else will ever understand. That's the point.", date: '03/03/2025' },
+          { author: 'You', title: 'Code word: spaghetti', body: 'Still makes me smile in public places.', date: '10/03/2025' }
+        ]
+      },
+      {
+        id: 'letters',
+        filename: '03 : LOVE_LETTERS.TXT',
+        title: 'WORDS FOR YOU',
+        subtitle: 'Some things deserve more than a text.',
+        cta: 'READ THE LETTERS',
+        icon: '✉',
+        color: '#f4ede2',
+        type: 'text',
+        heading: 'LETTERS FOR YOU',
+        entries: [
+          { author: 'Me', title: 'Tuesday, 2am', body: 'I was thinking about you. I am always thinking about you.', date: '19/03/2025' },
+          { author: 'You', title: 'A note I kept', body: 'I read it when I miss you. Which is often.', date: '25/03/2025' }
+        ]
+      },
+      {
+        id: 'soundtrack',
+        filename: '04 : OUR_SOUNDTRACK.MP3',
+        title: 'SOUNDS LIKE US',
+        subtitle: 'Every good love story has a soundtrack.',
+        cta: 'OPEN THE PLAYLIST',
+        icon: '♫',
+        color: '#f0dcdc',
+        type: 'song',
+        heading: 'OUR SOUNDTRACK',
+        entries: [
+          { author: 'Me', title: 'That one song', body: 'The one that was playing when everything made sense.', url: 'https://open.spotify.com', date: '01/04/2025' },
+          { author: 'You', title: 'Your pick', body: 'You said it reminded you of me. Now it reminds me of you.', url: 'https://open.spotify.com', date: '05/04/2025' }
+        ]
+      },
+      {
+        id: 'someday',
+        filename: '05 : SOMEDAY_WITH_YOU.LST',
+        title: 'OUR SOMEDAY LIST',
+        subtitle: 'Big dreams. Small adventures. Together.',
+        cta: 'MAKE SOME PLANS',
+        icon: '✛',
+        color: '#efe7d0',
+        type: 'list',
+        heading: 'OUR SOMEDAY LIST',
+        entries: [
+          { author: 'Us', title: 'Road trip with no map', body: 'Windows down, bad snacks, your hand in mine.', date: '12/04/2025' },
+          { author: 'Me', title: 'Learn something silly together', body: 'Pottery? Salsa? Whatever makes us laugh.', date: '18/04/2025' }
+        ]
+      }
+    ];
+
+    const reminders = [
+      'You are my favorite notification.',
+      "I choose you. And I'll keep choosing you.",
+      'You make ordinary days feel like gifts.',
+      "You're the best part of my today.",
+      "I'm proud of you, even from afar.",
+      'You are loved more than you know.',
+      "Home isn't a place. It's you.",
+      "I'm saving a hug with your name on it."
+    ];
+
+    const STORAGE_PREFIX = 'just_us_sections_room_';
+    const ROOM_STORAGE_KEY = 'just_us_active_room_code';
+
+    function sanitizeRoomCode(raw) {
+      const cleaned = String(raw || '')
+        .trim()
+        .toUpperCase()
+        .replace(/[^A-Z0-9_-]/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+      return cleaned || 'JUST-US-01';
+    }
+
+    function mergeWithCanonicalSections(candidateList) {
+      const base = JSON.parse(JSON.stringify(defaultSections));
+      if (!Array.isArray(candidateList)) return base;
+      return base.map((canon) => {
+        const match = candidateList.find(item => item && (item.id === canon.id || item.filename === canon.filename));
+        if (match && Array.isArray(match.entries)) {
+          return { ...canon, entries: match.entries };
+        }
+        return canon;
+      });
+    }
+
+    const roomCode = (() => {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const roomFromUrl = params.get('room');
+        if (roomFromUrl) {
+          const code = sanitizeRoomCode(roomFromUrl);
+          localStorage.setItem(ROOM_STORAGE_KEY, code);
+          return code;
+        }
+
+        const saved = localStorage.getItem(ROOM_STORAGE_KEY);
+        if (saved) return sanitizeRoomCode(saved);
+      } catch (e) {}
+
+      return 'JUST-US-01';
+    })();
+
+    let sections = [];
+    let currentSection = null;
+    let pendingDelete = null;
+
+    function loadSectionsFromStorage(code) {
+      try {
+        const raw = localStorage.getItem(STORAGE_PREFIX + code);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            return mergeWithCanonicalSections(parsed);
+          }
+        }
+      } catch (e) {}
+
+      return mergeWithCanonicalSections(null);
+    }
+
+    function saveSections() {
+      sections = mergeWithCanonicalSections(sections);
+      try {
+        localStorage.setItem(STORAGE_PREFIX + roomCode, JSON.stringify(sections));
+        localStorage.setItem(ROOM_STORAGE_KEY, roomCode);
+      } catch (e) {
+        console.error('Local storage error:', e);
+      }
+
+      renderGrid();
+
+      if (currentSection) {
+        const updated = sections.find(s => s.id === currentSection.id) || sections[0];
+        currentSection = updated;
+        renderEntries();
+      }
+    }
+
+    function updateRoomLabels() {
+      const editorRoom = document.getElementById('editor-room-name');
+      const roomInput = document.getElementById('room-code-input');
+      if (editorRoom) editorRoom.textContent = roomCode;
+      if (roomInput) roomInput.value = roomCode;
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str || '';
+      return div.innerHTML;
+    }
+
+    function renderGrid() {
+      const grid = document.getElementById('section-grid');
+      if (!grid) return;
+
+      grid.innerHTML = '';
+      sections = mergeWithCanonicalSections(sections);
+
+      sections.forEach((sec, index) => {
+        const card = document.createElement('div');
+        card.className = 'desktop-card' + (index === 4 ? ' wide' : '');
+        card.style.background = sec.color;
+
+        const count = Array.isArray(sec.entries) ? sec.entries.length : 0;
+        card.innerHTML = `
+          <div class="card-header"><span>[ ${sec.filename} ]</span><span>${count} ${count === 1 ? 'ITEM' : 'ITEMS'} →</span></div>
+          <div class="card-body">
+            <div class="card-icon">${sec.icon}</div>
+            <h3>${sec.title}</h3>
+            <p>${sec.subtitle}</p>
+          </div>
+          <div class="card-footer"><span>${sec.cta}</span><span>→</span></div>
+        `;
+        card.addEventListener('click', () => openWorkspace(sec));
+        grid.appendChild(card);
+      });
+
+      const note = document.createElement('div');
+      note.className = 'desktop-card note';
+      note.innerHTML = `
+        <div class="note-label">NOTE TO SELF:</div>
+        <p>Collect moments.<br>Keep the silly things.<br>Love them loudly.</p>
+        <div class="note-sign">especially the silly things. ♡</div>
+      `;
+      grid.appendChild(note);
+    }
+
+    function openWorkspace(sec) {
+      currentSection = sections.find(s => s.id === sec.id) || sec;
+      const workspace = document.getElementById('workspace');
+      document.getElementById('workspace-title').textContent = currentSection.filename;
+      document.getElementById('workspace-subtitle').textContent = `[ ${currentSection.id.toUpperCase()}_WORKSPACE ]`;
+      document.getElementById('workspace-heading').textContent = currentSection.heading;
+      document.getElementById('entry-status').textContent = '';
+      renderEntries();
+      workspace.showModal();
+    }
+
+    function renderEntries() {
+      const container = document.getElementById('entries');
+      if (!container || !currentSection) return;
+      container.innerHTML = '';
+
+      const entries = currentSection.entries || [];
+      if (!entries.length) {
+        container.innerHTML = '<p class="save-note" style="padding: 1.5rem 0; text-align: center;">Nothing here yet. Click "+ Add something" to add your first memory! ♡</p>';
+        return;
+      }
+
+      entries.forEach((entry, idx) => {
+        const el = document.createElement('div');
+        el.className = 'entry';
+
+        let media = '';
+        if (entry.photo) {
+          media = `<img src="${entry.photo}" alt="${escapeHtml(entry.title)}" />`;
+        } else if (entry.url) {
+          media = `<p class="mono" style="margin-top:0.5rem;"><a href="${escapeHtml(entry.url)}" target="_blank" rel="noopener" style="color: var(--rose); text-decoration: underline;">♫ OPEN LINK</a></p>`;
+        }
+
+        const displayDate = entry.date || 'Saved';
+
+        el.innerHTML = `
+          <div class="entry-meta">${escapeHtml(entry.author)}<br>${escapeHtml(displayDate)}</div>
+          <div class="entry-body">
+            <h4>${escapeHtml(entry.title)}</h4>
+            <p>${escapeHtml(entry.body)}</p>
+            ${media}
+          </div>
+          <div class="entry-actions">
+            <button type="button" data-action="up" data-idx="${idx}">Move Up</button>
+            <button type="button" data-action="down" data-idx="${idx}">Move Down</button>
+            <button type="button" data-action="delete" data-idx="${idx}">Delete</button>
+          </div>
+        `;
+
+        el.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', () => handleEntryAction(btn.dataset.action, Number(btn.dataset.idx)));
+        });
+
+        container.appendChild(el);
+      });
+    }
+
+    function handleEntryAction(action, idx) {
+      const entries = currentSection.entries;
+
+      if (action === 'up' && idx > 0) {
+        [entries[idx], entries[idx - 1]] = [entries[idx - 1], entries[idx]];
+        saveSections();
+        renderEntries();
+        document.getElementById('entry-status').textContent = 'Order saved & synced to our world. ♡';
+      } else if (action === 'down' && idx < entries.length - 1) {
+        [entries[idx], entries[idx + 1]] = [entries[idx + 1], entries[idx]];
+        saveSections();
+        renderEntries();
+        document.getElementById('entry-status').textContent = 'Order saved & synced to our world. ♡';
+      } else if (action === 'delete') {
+        pendingDelete = idx;
+        document.getElementById('delete-item-title').textContent = entries[idx].title;
+        document.getElementById('delete-confirmation').showModal();
+      }
+    }
+
+    function confirmDelete() {
+      if (pendingDelete !== null && currentSection) {
+        currentSection.entries.splice(pendingDelete, 1);
+        pendingDelete = null;
+        saveSections();
+        renderEntries();
+        document.getElementById('entry-status').textContent = 'Deleted & synced across devices.';
+      }
+      document.getElementById('delete-confirmation').close();
+    }
+
+    function openEditor() {
+      const form = document.getElementById('entry-form');
+      form.reset();
+      document.getElementById('form-error').textContent = '';
+      updateRoomLabels();
+
+      const type = currentSection.type;
+      document.getElementById('photo-label').hidden = type !== 'photo';
+      document.getElementById('url-label').hidden = type !== 'song';
+      document.getElementById('title-label').hidden = false;
+      document.getElementById('body-label').hidden = false;
+
+      document.getElementById('editor').showModal();
+    }
+
+    async function compressImageFile(file, maxDimension = 800, quality = 0.75) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const img = new Image();
+          img.onload = () => {
+            let width = img.width;
+            let height = img.height;
+
+            if (width > maxDimension || height > maxDimension) {
+              if (width > height) {
+                height = Math.round((height * maxDimension) / width);
+                width = maxDimension;
+              } else {
+                width = Math.round((width * maxDimension) / height);
+                height = maxDimension;
+              }
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            resolve(canvas.toDataURL('image/jpeg', quality));
+          };
+          img.onerror = reject;
+          img.src = event.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function onEntrySubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const type = currentSection.type;
+
+      const entry = {
+        author: (data.get('author') || '').trim() || 'Us',
+        title: (data.get('title') || '').trim(),
+        body: (data.get('body') || '').trim(),
+        date: new Date().toLocaleDateString()
+      };
+
+      if (!entry.title) {
+        document.getElementById('form-error').textContent = 'Please give this little moment a title.';
+        return;
+      }
+
+      if (type === 'photo') {
+        const file = data.get('photo');
+        if (file && file.size) {
+          if (file.size > 8 * 1024 * 1024) {
+            document.getElementById('form-error').textContent = 'Photo must be under 8 MB.';
+            return;
+          }
+          try {
+            entry.photo = await compressImageFile(file, 800, 0.75);
+          } catch {
+            document.getElementById('form-error').textContent = 'Could not process photo. Please try another image.';
+            return;
+          }
+        }
+      }
+
+      if (type === 'song') {
+        const url = (data.get('url') || '').trim();
+        if (url) entry.url = url;
+      }
+
+      currentSection.entries.unshift(entry);
+      saveSections();
+      document.getElementById('editor').close();
+      renderEntries();
+      document.getElementById('entry-status').textContent = 'Added & synced to our world. ♡';
+    }
+
+    function showReminder() {
+      const text = reminders[Math.floor(Math.random() * reminders.length)];
+      document.getElementById('reminder-text').textContent = text;
+      document.getElementById('reminder').showModal();
+    }
+
+    function buildShareableUrl() {
+      const url = new URL(window.location.href);
+      url.searchParams.set('room', roomCode);
+
+      try {
+        const lightSections = sections.map(sec => ({
+          id: sec.id,
+          entries: (sec.entries || []).map(entry => {
+            const copy = { ...entry };
+            if (copy.photo && copy.photo.length > 2000) delete copy.photo;
+            return copy;
+          })
+        }));
+
+        const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(lightSections))));
+        if (encoded.length < 8000) {
+          url.hash = `world=${encoded}`;
+        }
+      } catch (e) {}
+
+      return url.toString();
+    }
+
+    function downloadBakedHtmlFile() {
+      const clone = document.documentElement.cloneNode(true);
+      clone.querySelectorAll('dialog').forEach(d => d.removeAttribute('open'));
+
+      const payload = {
+        roomCode: roomCode,
+        bakedAt: new Date().toISOString(),
+        sections: mergeWithCanonicalSections(sections)
+      };
+
+      const script = document.createElement('script');
+      script.id = 'baked-initial-state';
+      script.type = 'application/json';
+      script.textContent = JSON.stringify(payload);
+
+      const body = clone.querySelector('body');
+      if (body) body.appendChild(script);
+
+      const html = '<!doctype html>\n' + clone.outerHTML;
+      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function bindEvents() {
+      document.querySelectorAll('.close').forEach(btn => {
+        btn.addEventListener('click', () => btn.closest('dialog').close());
+      });
+
+      document.getElementById('add-entry').addEventListener('click', openEditor);
+      document.getElementById('entry-form').addEventListener('submit', onEntrySubmit);
+
+      document.getElementById('cancel-delete').addEventListener('click', () => document.getElementById('delete-confirmation').close());
+      document.getElementById('confirm-delete').addEventListener('click', confirmDelete);
+
+      document.getElementById('surprise').addEventListener('click', showReminder);
+      document.getElementById('another-reminder').addEventListener('click', showReminder);
+
+      document.getElementById('open-reset-dialog').addEventListener('click', () => document.getElementById('reset-confirmation').showModal());
+      document.getElementById('cancel-reset').addEventListener('click', () => document.getElementById('reset-confirmation').close());
+      document.getElementById('confirm-reset').addEventListener('click', () => {
+        sections = JSON.parse(JSON.stringify(defaultSections));
+        saveSections();
+        if (currentSection) {
+          currentSection = sections.find(s => s.id === currentSection.id) || sections[0];
+          renderEntries();
+        }
+        document.getElementById('reset-confirmation').close();
+        document.getElementById('room-status-msg').textContent = 'Starter examples restored ♡';
+      });
+
+      const openShare = () => {
+        updateRoomLabels();
+        document.getElementById('room-dialog').showModal();
+      };
+
+      document.getElementById('open-share-dialog').addEventListener('click', openShare);
+      document.getElementById('footer-share-btn').addEventListener('click', openShare);
+
+      document.getElementById('download-baked-html').addEventListener('click', () => {
+        downloadBakedHtmlFile();
+        document.getElementById('room-status-msg').textContent = 'Downloaded index.html! Drop it onto Netlify or Tiiny Host to get a live link for her ♡';
+      });
+
+      document.getElementById('copy-room-link').addEventListener('click', () => {
+        const shareUrl = buildShareableUrl();
+        const temp = document.createElement('textarea');
+        temp.value = shareUrl;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        document.getElementById('room-status-msg').textContent = 'Web link copied! Paste & send it to her ♡';
+      });
+
+      document.getElementById('native-share-btn').addEventListener('click', async () => {
+        const shareUrl = buildShareableUrl();
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: 'Just Us — our little world',
+              text: 'I made a little corner of the internet just for us ♡',
+              url: shareUrl
+            });
+            document.getElementById('room-status-msg').textContent = 'Shared with your favorite person ♡';
+            return;
+          } catch (e) {}
+        }
+        document.getElementById('copy-room-link').click();
+      });
+
+      document.getElementById('room-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const inputVal = document.getElementById('room-code-input').value;
+        const newCode = sanitizeRoomCode(inputVal);
+
+        if (newCode !== roomCode) {
+          const saved = localStorage.getItem(STORAGE_PREFIX + newCode);
+          if (saved) {
+            sections = mergeWithCanonicalSections(JSON.parse(saved));
+          } else {
+            sections = loadSectionsFromStorage(newCode);
+          }
+          localStorage.setItem(ROOM_STORAGE_KEY, newCode);
+          window.location.search = '?room=' + encodeURIComponent(newCode);
+        } else {
+          updateRoomLabels();
+          document.getElementById('room-status-msg').textContent = 'Room is already active ♡';
+        }
+      });
+
+      document.getElementById('export-json-btn').addEventListener('click', () => {
+        const payload = {
+          app: 'Just Us — Our Little World',
+          roomCode,
+          exportedAt: new Date().toISOString(),
+          sections
+        };
+
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `our-little-world-${roomCode.toLowerCase()}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        document.getElementById('room-status-msg').textContent = 'Backup .json file downloaded! ♡';
+      });
+
+      const importInput = document.getElementById('import-json-input');
+      document.getElementById('import-json-btn').addEventListener('click', () => importInput.click());
+      importInput.addEventListener('change', async (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+
+        try {
+          const text = await file.text();
+          const parsed = JSON.parse(text);
+          const importedSections = Array.isArray(parsed) ? parsed : parsed.sections;
+          if (Array.isArray(importedSections) && importedSections.length > 0) {
+            sections = mergeWithCanonicalSections(importedSections);
+            saveSections();
+            if (currentSection) {
+              currentSection = sections.find(s => s.id === currentSection.id) || sections[0];
+              renderEntries();
+            }
+            document.getElementById('room-status-msg').textContent = 'Keepsake loaded into our world! ♡';
+          }
+        } catch (err) {
+          document.getElementById('room-status-msg').textContent = 'Could not read keepsake file.';
+        } finally {
+          importInput.value = '';
+        }
+      });
+    }
+
+    function init() {
+      sections = loadSectionsFromStorage(roomCode);
+      updateRoomLabels();
+      renderGrid();
+      bindEvents();
+    }
+
+    init();
+  </script>
+
+</body></html>
